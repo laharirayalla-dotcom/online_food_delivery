@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodExpress - Orders</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fff5ed;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 85px;
+            background-color: #ff512f;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 50px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            font-size: 30px;
+            margin-right: 10px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-right a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .logout-btn {
+            background-color: white;
+            color: #222;
+
+            border: 1px solid #555;
+            padding: 3px 6px;
+
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 1135px;
+            max-width: 90%;
+
+            margin: 40px auto;
+        }
+
+        .page-title {
+            color: #ff512f;
+            font-size: 30px;
+
+            margin-bottom: 25px;
+        }
+
+        /* ================= ORDER CARD ================= */
+
+        .order-card {
+            background-color: white;
+
+            border-radius: 14px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid #ddd;
+
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .order-id {
+            color: #ff512f;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .order-status {
+            background-color: #ffe0d6;
+            color: #ff512f;
+
+            padding: 7px 14px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+        }
+
+        /* ================= ORDER ITEMS ================= */
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 12px 5px;
+
+            border-bottom: 1px solid #eee;
+
+            font-size: 17px;
+        }
+
+        .item-name {
+            font-weight: bold;
+        }
+
+        .item-price {
+            font-weight: bold;
+        }
+
+        /* ================= TOTAL ================= */
+
+        .order-total {
+            text-align: right;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            margin-top: 18px;
+
+            color: #222;
+        }
+
+        /* ================= EMPTY ================= */
+
+        .empty-orders {
+            background-color: white;
+
+            padding: 50px;
+
+            text-align: center;
+
+            border-radius: 14px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .empty-orders h2 {
+            color: #ff512f;
+            margin-bottom: 15px;
+        }
+
+        .empty-orders p {
+            color: #666;
+            font-size: 17px;
+        }
+
+        .menu-btn {
+            margin-top: 20px;
+
+            background-color: #ff512f;
+            color: white;
+
+            border: none;
+
+            padding: 12px 25px;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .menu-btn:hover {
+            background-color: #e94325;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .nav-right {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            .container {
+                max-width: 92%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <div class="navbar">
+
+        <div class="logo">
+            <span>🍔</span>FoodExpress
+        </div>
+
+
+        <div class="nav-right">
+
+            <span id="welcomeUser">
+                Welcome Greeshma
+            </span>
+
+            <a href="user.html">
+                Menu
+            </a>
+
+            <a href="user.html#cartSection">
+                Cart
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <button
+                class="logout-btn"
+                onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="container">
+
+        <h1 class="page-title">
+            📦 My Orders
+        </h1>
+
+
+        <!-- Orders will appear here -->
+
+        <div id="ordersContainer"></div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* ================= USER NAME ================= */
+
+        const username =
+            localStorage.getItem("username");
+
+
+        if (username) {
+
+            document.getElementById(
+                "welcomeUser"
+            ).innerText =
+                "Welcome " + username;
+
+        }
+
+
+        /* ================= GET ORDERS ================= */
+
+        let orders =
+            JSON.parse(
+                localStorage.getItem("orders")
+            ) || [];
+
+
+        /* ================= DISPLAY ORDERS ================= */
+
+        function displayOrders() {
+
+            const container =
+                document.getElementById(
+                    "ordersContainer"
+                );
+
+
+            container.innerHTML = "";
+
+
+            /* If there are no orders */
+
+            if (orders.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty-orders">
+
+                        <h2>
+                            🛒 No Orders Yet
+                        </h2>
+
+                        <p>
+                            You haven't placed any orders yet.
+                        </p>
+
+                        <button
+                            class="menu-btn"
+                            onclick="goToMenu()">
+
+                            Browse Food Menu
+
+                        </button>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            /* ================= ORDER ================= */
+
+            const orderCard =
+                document.createElement("div");
+
+            orderCard.className =
+                "order-card";
+
+
+            /* Order Header */
+
+            const header =
+                document.createElement("div");
+
+            header.className =
+                "order-header";
+
+
+            header.innerHTML = `
+
+                <div class="order-id">
+                    Order #${Math.floor(
+                        Math.random() * 9000
+                    ) + 1000}
+                </div>
+
+                <div class="order-status">
+                    ✓ Order Placed
+                </div>
+
+            `;
+
+
+            orderCard.appendChild(header);
+
+
+            /* ================= ITEMS ================= */
+
+            let total = 0;
+
+
+            orders.forEach(function(item) {
+
+                total += Number(item.price);
+
+
+                const itemDiv =
+                    document.createElement("div");
+
+                itemDiv.className =
+                    "order-item";
+
+
+                itemDiv.innerHTML = `
+
+                    <span class="item-name">
+                        🍽️ ${item.name}
+                    </span>
+
+                    <span class="item-price">
+                        ₹${item.price}
+                    </span>
+
+                `;
+
+
+                orderCard.appendChild(itemDiv);
+
+            });
+
+
+            /* ================= TOTAL ================= */
+
+            const totalDiv =
+                document.createElement("div");
+
+            totalDiv.className =
+                "order-total";
+
+
+            totalDiv.innerText =
+                "Total Amount: ₹" + total;
+
+
+            orderCard.appendChild(totalDiv);
+
+
+            container.appendChild(orderCard);
+
+        }
+
+
+        /* ================= MENU ================= */
+
+        function goToMenu() {
+
+            window.location.href =
+                "user.html";
+
+        }
+
+
+        /* ================= LOGOUT ================= */
+
+        function logout() {
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        /* ================= LOAD ORDERS ================= */
+
+        displayOrders();
+
+
+    </script>
+
+
+</body>
+
+</html>

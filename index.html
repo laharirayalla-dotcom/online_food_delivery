@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodExpress - Online Food Delivery</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>🍔 FoodExpress</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Signup</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO SLIDER -->
+
+<section class="hero-slider">
+
+    <!-- Slide 1 -->
+
+    <div class="slide active">
+
+        <img src="online.jpeg"
+             alt="Pizza Food Delivery">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <h2>Delicious Food Delivered To Your Door</h2>
+
+            <p>
+                Order your favourite food quickly and easily.
+            </p>
+
+            <a href="login.html" class="btn">
+                Order Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Slide 2 -->
+
+    <div class="slide">
+
+        <img src="food.jpeg"
+             alt="Food Delivery">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <h2>Fast & Fresh Delivery</h2>
+
+            <p>
+                Your favourite meals are just one click away.
+            </p>
+
+            <a href="login.html" class="btn">
+                Order Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Slide 3 -->
+
+    <div class="slide">
+
+        <img src="biryani.jpeg"
+             alt="Delicious Biryani">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <h2>Taste Your Favourite Food</h2>
+
+            <p>
+                Hot, fresh and delicious food delivered to you.
+            </p>
+
+            <a href="login.html" class="btn">
+                Order Now
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- PREVIOUS BUTTON -->
+
+    <button class="slider-btn prev"
+            onclick="changeSlide(-1)">
+        ❮
+    </button>
+
+
+    <!-- NEXT BUTTON -->
+
+    <button class="slider-btn next"
+            onclick="changeSlide(1)">
+        ❯
+    </button>
+
+
+    <!-- SLIDER DOTS -->
+
+    <div class="dots">
+
+        <span class="dot active"
+              onclick="showSlide(0)">
+        </span>
+
+        <span class="dot"
+              onclick="showSlide(1)">
+        </span>
+
+        <span class="dot"
+              onclick="showSlide(2)">
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- FOOD IMAGE CARDS -->
+
+<section class="food-images">
+
+    <div class="food-image">
+
+        <img src="pizza.jpeg"
+             alt="Delicious Pizza">
+
+        <h3>🍕 Delicious Pizza</h3>
+
+    </div>
+
+
+    <div class="food-image">
+
+        <img src="burger.jpeg"
+             alt="Food Delivery">
+
+        <h3>🍔 Tasty Burger</h3>
+
+    </div>
+
+
+    <div class="food-image">
+
+        <img src="biryani.jpeg"
+             alt="Delicious Biryani">
+
+        <h3>🍛 Delicious Biryani</h3>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="feature">
+
+        <h3>🍕 Wide Variety</h3>
+
+        <p>
+            Choose from different delicious food items.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <h3>🚴 Fast Delivery</h3>
+
+        <p>
+            Get your food delivered quickly.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <h3>💳 Easy Ordering</h3>
+
+        <p>
+            Simple and convenient online ordering.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 FoodExpress | Online Food Delivery System
+    </p>
+
+</footer>
+
+
+<!-- SLIDER JAVASCRIPT -->
+
+<script>
+
+let currentSlide = 0;
+
+const slides = document.querySelectorAll(".slide");
+
+const dots = document.querySelectorAll(".dot");
+
+
+function showSlide(index) {
+
+    if (index >= slides.length) {
+
+        currentSlide = 0;
+
+    }
+    else if (index < 0) {
+
+        currentSlide = slides.length - 1;
+
+    }
+    else {
+
+        currentSlide = index;
+
+    }
+
+
+    slides.forEach(function(slide) {
+
+        slide.classList.remove("active");
+
+    });
+
+
+    dots.forEach(function(dot) {
+
+        dot.classList.remove("active");
+
+    });
+
+
+    slides[currentSlide].classList.add("active");
+
+    dots[currentSlide].classList.add("active");
+
+}
+
+
+function changeSlide(direction) {
+
+    showSlide(currentSlide + direction);
+
+}
+
+
+/* Automatic sliding */
+
+setInterval(function() {
+
+    changeSlide(1);
+
+}, 4000);
+
+</script>
+
+</body>
+
+</html>

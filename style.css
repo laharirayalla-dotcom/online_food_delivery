@@ -1,0 +1,666 @@
+/* =====================================
+   FOOD EXPRESS - STYLE.CSS
+   ===================================== */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #fff5ed;
+    color: #333;
+}
+
+/* =====================================
+   HEADER
+   ===================================== */
+
+header {
+    background: #ff5722;
+    color: rgb(238, 243, 248);
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background: white;
+    color: #ff5722;
+}
+
+/* =====================================
+   HERO SLIDESHOW
+   ===================================== */
+
+.hero-slider {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    background: #222;
+}
+
+/* Each slide */
+
+.slide {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide.active {
+    display: block;
+}
+
+/* Slide image */
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Dark overlay */
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Text inside slide */
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 80%;
+    max-width: 700px;
+    
+    text-align: center;
+    color: white;
+    
+    background: rgba(0, 0, 0, 0.45);
+    padding: 35px;
+    border-radius: 15px;
+}
+
+.hero-content h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+/* Order Now button */
+
+.btn {
+    display: inline-block;
+    background: #ff5722;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #e64a19;
+}
+
+/* =====================================
+   SLIDER BUTTONS
+   ===================================== */
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 50px;
+    height: 50px;
+    
+    border: none;
+    border-radius: 50%;
+    
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    
+    font-size: 25px;
+    cursor: pointer;
+    
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: #ff5722;
+}
+
+.prev {
+    left: 25px;
+}
+
+.next {
+    right: 25px;
+}
+
+/* =====================================
+   SLIDER DOTS
+   ===================================== */
+
+.dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 13px;
+    height: 13px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+}
+
+.dot.active {
+    background: #ff5722;
+    transform: scale(1.2);
+}
+
+/* =====================================
+   FOOD IMAGE GRID
+   ===================================== */
+
+.food-images {
+    width: 100%;
+    padding: 50px 8%;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    
+    background: #fff8f2;
+}
+
+/* Individual food card */
+
+.food-image {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    
+    text-align: center;
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    
+    transition: transform 0.3s ease;
+}
+
+.food-image:hover {
+    transform: translateY(-8px);
+}
+
+/* Food image */
+
+.food-image img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Food title */
+
+.food-image h3 {
+    padding: 18px;
+    color: #ff5722;
+    font-size: 20px;
+}
+
+/* =====================================
+   FEATURES GRID
+   ===================================== */
+
+.features {
+    width: 100%;
+    padding: 50px 8%;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature {
+    background: white;
+    padding: 30px;
+    
+    text-align: center;
+    
+    border-radius: 12px;
+    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.feature h3 {
+    color: #ff5722;
+    margin-bottom: 12px;
+}
+
+.feature p {
+    color: #666;
+}
+
+/* =====================================
+   MAIN
+   ===================================== */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    color: #ff5722;
+    margin-bottom: 20px;
+}
+
+/* =====================================
+   FOOD GRID
+   ===================================== */
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.food-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    
+    box-shadow: 0 3px 10px #ddd;
+    
+    text-align: center;
+}
+
+.food-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.food-card h3 {
+    color: #ff5722;
+    margin: 12px 0;
+}
+
+.food-card p {
+    margin: 8px 0;
+}
+
+.food-card button {
+    background: #ff5722;
+    color: white;
+    
+    border: none;
+    padding: 10px 18px;
+    
+    border-radius: 6px;
+    cursor: pointer;
+    
+    font-weight: bold;
+}
+
+.food-card button:hover {
+    background: #e64a19;
+}
+
+/* =====================================
+   AUTHENTICATION
+   ===================================== */
+
+.auth-container {
+    min-height: 100vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: linear-gradient(
+        135deg,
+        #ff7043,
+        #ffcc80
+    );
+}
+
+.auth-box {
+    width: 380px;
+    
+    background: white;
+    
+    padding: 35px;
+    
+    border-radius: 15px;
+    
+    text-align: center;
+    
+    box-shadow: 0 5px 20px #999;
+}
+
+.auth-box h1 {
+    color: #ff5722;
+    margin-bottom: 15px;
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+}
+
+.auth-box input {
+    width: 100%;
+    
+    padding: 12px;
+    
+    margin: 8px 0;
+    
+    border: 1px solid #ccc;
+    
+    border-radius: 6px;
+}
+
+.auth-box button {
+    width: 100%;
+    
+    padding: 12px;
+    
+    margin: 15px 0;
+    
+    background: #ff5722;
+    color: white;
+    
+    border: none;
+    
+    border-radius: 6px;
+    
+    cursor: pointer;
+    
+    font-weight: bold;
+}
+
+.auth-box button:hover {
+    background: #e64a19;
+}
+
+.auth-box a {
+    color: #ff5722;
+    font-weight: bold;
+}
+
+.admin-info {
+    background: #fff3e0;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* =====================================
+   CART
+   ===================================== */
+
+#cart {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 15px;
+    
+    border-bottom: 1px solid #ddd;
+}
+
+#cart button {
+    background: #ff5722;
+    color: white;
+    
+    padding: 10px 18px;
+    
+    border: none;
+    border-radius: 6px;
+    
+    cursor: pointer;
+}
+
+/* =====================================
+   ORDERS
+   ===================================== */
+
+.order-card {
+    background: white;
+    
+    padding: 20px;
+    
+    margin: 15px 0;
+    
+    border-radius: 10px;
+    
+    box-shadow: 0 2px 8px #ddd;
+}
+
+.order-card h3 {
+    color: #ff5722;
+    margin-bottom: 10px;
+}
+
+/* =====================================
+   ADMIN
+   ===================================== */
+
+.admin-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.admin-form input {
+    padding: 12px;
+    
+    border: 1px solid #ccc;
+    
+    border-radius: 6px;
+}
+
+.admin-form button {
+    background: #ff5722;
+    color: white;
+    
+    border: none;
+    
+    padding: 10px 18px;
+    
+    border-radius: 6px;
+    
+    cursor: pointer;
+}
+
+.admin-food {
+    background: white;
+    
+    padding: 15px;
+    
+    margin: 10px 0;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-radius: 8px;
+}
+
+.delete-btn {
+    background: #d32f2f !important;
+}
+
+/* =====================================
+   FOOTER
+   ===================================== */
+
+footer {
+    text-align: center;
+    
+    padding: 25px;
+    
+    background: #333;
+    color: white;
+}
+
+/* =====================================
+   TABLET
+   ===================================== */
+
+@media (max-width: 900px) {
+
+    .food-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h2 {
+        font-size: 32px;
+    }
+}
+
+/* =====================================
+   MOBILE
+   ===================================== */
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-slider {
+        height: 400px;
+    }
+
+    .hero-content {
+        width: 85%;
+        padding: 25px 15px;
+    }
+
+    .hero-content h2 {
+        font-size: 25px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    .food-images {
+        grid-template-columns: 1fr;
+        padding: 35px 6%;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        padding: 35px 6%;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .auth-box {
+        width: 90%;
+    }
+}
